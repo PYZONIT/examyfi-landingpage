@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Examyfi | Exam Simplified</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Montserrat:wght@600;700&family=DM+Sans:wght@400;500;700&family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #1B246D;
+            --royal-blue: #27408A;
+            --gold: #DDA625;
+            --dark-gold: #B38C35;
+            --light-gray: #F2F2F2;
+            --white: #FFFFFF;
+            --text-dark: #1a1a1a;
+            --text-gray: #666;
+            --gradient-primary: linear-gradient(135deg, #1B246D 0%, #27408A 100%);
+            --gradient-gold: linear-gradient(135deg, #DDA625 0%, #B38C35 100%);
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+            --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-menu a:hover {
+            color: var(--gold);
+        }
+
+        .btn {
+            padding: 0.75rem 1.8rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-primary {
+            background: var(--gradient-gold);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(221, 166, 37, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(221, 166, 37, 0.4);
+        }
+
+        /* Hero Section */
+        .about-hero {
+            margin-top: 80px;
+            background: var(--gradient-primary);
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-hero::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(221, 166, 37, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -200px;
+            right: -200px;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(30px, 30px) scale(1.1); }
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(221, 166, 37, 0.2);
+            color: var(--gold);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(221, 166, 37, 0.3);
+        }
+
+        .about-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 900;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            letter-spacing: -2px;
+        }
+
+        .about-hero p {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.7;
+        }
+
+        /* Story Section */
+        .story-section {
+            padding: 6rem 2rem;
+            background: var(--white);
+        }
+
+        .section-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(27, 36, 109, 0.1), rgba(39, 64, 138, 0.15));
+            color: var(--navy);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-header h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        .story-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .story-text {
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+        }
+
+        .story-text strong {
+            color: var(--navy);
+            font-weight: 700;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border-left: 4px solid var(--gold);
+            margin: 3rem 0;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .highlight-box p {
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            font-weight: 500;
+            line-height: 1.8;
+        }
+
+        /* Partners Section */
+        .partners-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%);
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .partner-card {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 24px;
+            box-shadow: var(--shadow-md);
+            transition: all 0.4s;
+            border: 2px solid transparent;
+            text-align: center;
+        }
+
+        .partner-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--gold);
+        }
+
+        .partner-logo-box {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--light-gray);
+            border-radius: 20px;
+            padding: 1.5rem;
+        }
+
+        .partner-logo-box img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .partner-name {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+
+        .partner-location {
+            font-size: 0.95rem;
+            color: var(--text-gray);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .partner-description {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+        }
+
+        .partner-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px solid var(--light-gray);
+        }
+
+        .stat-box {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--gold);
+            display: block;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+        }
+
+        /* Mentors Section */
+        .mentors-section {
+            padding: 6rem 2rem;
+            background: var(--white);
+        }
+
+        .mentors-intro {
+            max-width: 900px;
+            margin: 0 auto 4rem;
+            text-align: center;
+        }
+
+        .mentors-intro p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: var(--text-gray);
+        }
+
+        .mentors-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .mentor-card {
+            background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%);
+            padding: 3rem;
+            border-radius: 24px;
+            box-shadow: var(--shadow-md);
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+            transition: all 0.4s;
+            border: 2px solid transparent;
+        }
+
+        .mentor-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--gold);
+        }
+
+        .mentor-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--white);
+            flex-shrink: 0;
+            box-shadow: 0 8px 25px rgba(27, 36, 109, 0.3);
+        }
+
+        .mentor-info {
+            flex: 1;
+        }
+
+        .mentor-name {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .mentor-title {
+            font-size: 1rem;
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .mentor-description {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--text-gray);
+            margin-bottom: 1.5rem;
+        }
+
+        .mentor-expertise {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .expertise-tag {
+            background: rgba(221, 166, 37, 0.15);
+            color: var(--dark-gold);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* Values Section */
+        .values-section {
+            padding: 6rem 2rem;
+            background: var(--gradient-primary);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .values-section::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(221, 166, 37, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            bottom: -150px;
+            left: -150px;
+        }
+
+        .values-section .section-header h2 {
+            color: var(--white);
+        }
+
+        .values-section .section-tag {
+            background: rgba(255, 255, 255, 0.15);
+            color: var(--white);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .value-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s;
+        }
+
+        .value-card:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .value-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .value-card h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .value-card p {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.7;
+        }
+
+        /* Impact Section */
+        .impact-section {
+            padding: 6rem 2rem;
+            background: var(--white);
+        }
+
+        .impact-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .impact-stat {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%);
+            border-radius: 20px;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s;
+        }
+
+        .impact-stat:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .impact-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .impact-label {
+            font-size: 1rem;
+            color: var(--text-gray);
+            font-weight: 500;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%);
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-content p {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            margin-bottom: 2.5rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+
+        /* Footer */
+        footer {
+            background: #0a0f2e;
+            color: var(--white);
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .footer-logo {
+            height: 60px;
+            width: auto;
+        }
+
+        .footer-tagline {
+            color: var(--gold);
+            font-size: 1.1rem;
+            font-weight: 600;
+            font-style: italic;
+        }
+
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.7;
+        }
+
+        .footer-column h4 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-column ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .partners-grid,
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .mentors-grid,
+            .impact-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .about-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .partners-grid,
+            .mentors-grid,
+            .values-grid,
+            .impact-stats,
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .mentor-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .mentor-avatar {
+                margin: 0 auto;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo-container">
+                <img src="Picsart_25-11-25_16-02-38-714.png" alt="Examyfi Logo" class="logo-img">
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#story">Our Story</a></li>
+                <li><a href="#partners">Partners</a></li>
+                <li><a href="#mentors">Expert Mentors</a></li>
+                <li><a href="#values">Our Values</a></li>
+            </ul>
+            <a href="index.html" class="btn btn-primary">Back to Home</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="about-hero">
+        <div class="hero-content">
+            <div class="hero-badge">🎓 About Examyfi</div>
+            <h1>Where Excellence Meets Innovation</h1>
+            <p>Born from decades of teaching excellence, powered by cutting-edge technology. We're transforming NEET & JEE preparation through collaboration with India's most trusted institutions.</p>
+        </div>
+    </section>
+
+    <!-- Our Story -->
+    <section id="story" class="story-section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Our Journey</span>
+                <h2>The Story Behind Examyfi</h2>
+            </div>
+            <div class="story-content">
+                <p class="story-text">
+                    For decades, students aspiring to become doctors and engineers have struggled—not for lack of talent, but for lack of <strong>structured guidance, personalized attention, and timely support</strong>. Even the most dedicated students often miss crucial opportunities in scholarships, admissions, and strategic preparation.
+                </p>
+                <p class="story-text">
+                    Examyfi was born from a simple yet powerful vision: <strong>What if we could combine decades of proven teaching wisdom with modern technology?</strong> What if every student could have a personalized study plan, instant performance feedback, and access to expert mentors—all in their pocket?
+                </p>
+                <div class="highlight-box">
+                    <p>
+                        We partnered with three legendary institutions—<strong>Rehmani30, Al Amin Mission West Bengal, and Mission Awareness Foundation</strong>—who collectively bring over <strong>30 years of excellence</strong> in NEET and JEE coaching. Together, we've mentored <strong>100+ IIT and AIIMS alumni</strong>, and now we're scaling that expertise to reach every aspiring student across India.
+                    </p>
+                </div>
+                <p class="story-text">
+                    Examyfi is not just another EdTech platform. We're a <strong>bridge between time-tested pedagogy and cutting-edge technology</strong>. We're a support system built by teachers, for students and teachers. We measure our success not in downloads, but in dreams fulfilled.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section id="partners" class="partners-section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Our Foundation</span>
+                <h2>Powered by Decades of Excellence</h2>
+                <p style="max-width: 800px; margin: 0 auto; color: var(--text-gray); font-size: 1.1rem;">
+                    Examyfi stands on the shoulders of giants—three institutions whose combined expertise has shaped thousands of successful medical and engineering careers.
+                </p>
+            </div>
+            <div class="partners-grid">
+                <!-- Partner 1 -->
+                <div class="partner-card">
+                    <div class="partner-logo-box">
+                        <img src="17.png" alt="Rehmani30 Logo">
+                    </div>
+                    <h3 class="partner-name">Rehmani30</h3>
+                    <p class="partner-location">📍 Pan India</p>
+                    <p class="partner-description">
+                        For over 30 years, Rehmani30 has been synonymous with disciplined, result-oriented coaching. Their faculty's deep understanding of competitive exams and proven methodologies have created numerous toppers.
+                    </p>
+                    <div class="partner-stats">
+                        <div class="stat-box">
+                            <span class="stat-number">30+</span>
+                            <span class="stat-label">Years Legacy</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-number">50+</span>
+                            <span class="stat-label">AIR Holders</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Partner 2 -->
+                <div class="partner-card">
+                    <div class="partner-logo-box">
+                        <img src="unnamed.png" alt="Al Amin Mission Logo">
+                    </div>
+                    <h3 class="partner-name">Al Amin Mission</h3>
+                    <p class="partner-location">📍 West Bengal</p>
+                    <p class="partner-description">
+                        Al Amin Mission West Bengal brings holistic student development and exceptional teaching quality. Their inclusive approach and innovative pedagogy have set new benchmarks in competitive exam preparation.
+                    </p>
+                    <div class="partner-stats">
+                        <div class="stat-box">
+                            <span class="stat-number">35+</span>
+                            <span class="stat-label">IIT Qualifiers</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-number">5000+</span>
+                            <span class="stat-label">Students Guided</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Partner 3 -->
+                <div class="partner-card">
+                    <div class="partner-logo-box">
+                        <img src="15.jpeg" alt="Mission Awareness Foundation Logo">
+                    </div>
+                    <h3 class="partner-name">Mission Awareness Foundation</h3>
+                    <p class="partner-location">📍 National Reach</p>
+                    <p class="partner-description">
+                        Focused on making quality education accessible to all, Mission Awareness Foundation brings counselling expertise and scholarship guidance. They've helped countless students secure financial support for their dreams.
+                    </p>
+                    <div class="partner-stats">
+                        <div class="stat-box">
+                            <span class="stat-number">₹5Cr+</span>
+                            <span class="stat-label">Scholarships</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-number">10K+</span>
+                            <span class="stat-label">Students Helped</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expert Mentors -->
+    <section id="mentors" class="mentors-section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Meet Our Experts</span>
+                <h2>Legendary Mentors with Decades of Experience</h2>
+            </div>
+            <div class="mentors-intro">
+                <p>
+                    Our expert mentors are not just teachers—they're architects of success stories. With decades of experience in NEET and JEE coaching, they bring deep subject knowledge, strategic insights, and genuine care for every student's journey.
+                </p>
+            </div>
+            <div class="mentors-grid">
+                <!-- Mentor 1 -->
+                <div class="mentor-card">
+                    <div class="mentor-avatar">DR</div>
+                    <div class="mentor-info">
+                        <h3 class="mentor-name">Dr. Abdurrehman Sir</h3>
+                        <p class="mentor-title">Senior NEET & JEE Mentor | 25+ Years Experience</p>
+                        <p class="mentor-description">
+                            Dr. Abdurrehman Sir is a legendary figure in competitive exam coaching. With over 25 years of teaching experience, he has mentored hundreds of students who are now practicing doctors and engineers. His unique teaching methodology simplifies complex concepts and his motivational approach keeps students focused during challenging times.
+                        </p>
+                        <div class="mentor-expertise">
+                            <span class="expertise-tag">Physics Expert</span>
+                            <span class="expertise-tag">Chemistry</span>
+                            <span class="expertise-tag">Strategy Planning</span>
+                            <span class="expertise-tag">Counselling</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mentor 2 -->
+                <div class="mentor-card">
+                    <div class="mentor-avatar">DA</div>
+                    <div class="mentor-info">
+                        <h3 class="mentor-name">Dr. Alam Sir</h3>
+                        <p class="mentor-title">Expert Biology & Chemistry Mentor | 20+ Years Experience</p>
+                        <p class="mentor-description">
+                            Dr. Alam Sir specializes in Biology and Chemistry for NEET aspirants. With 20+ years of teaching excellence, he has an exceptional ability to make even the most difficult topics accessible. His students consistently praise his patience, clarity, and the personal attention he gives to each aspirant's unique learning needs.
+                        </p>
+                        <div class="mentor-expertise">
+                            <span class="expertise-tag">Biology Master</span>
+                            <span class="expertise-tag">Organic Chemistry</span>
+                            <span class="expertise-tag">NEET Strategy</span>
+                            <span class="expertise-tag">Doubt Resolution</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Values -->
+    <section id="values" class="values-section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">What Drives Us</span>
+                <h2>Our Core Values</h2>
+            </div>
+            <div class="values-grid">
+                <div class="value-card">
+                    <span class="value-icon">🎯</span>
+                    <h3>Student-First Always</h3>
+                    <p>Every decision starts with one question: "Does this genuinely help students perform better or feel more supported?" If not, we don't do it.</p>
+                </div>
+                <div class="value-card">
+                    <span class="value-icon">🤝</span>
+                    <h3>Expert-Led Teaching</h3>
+                    <p>Technology assists our expert teachers; it doesn't replace them. Our content and guidance come from decades of real classroom experience.</p>
+                </div>
+                <div class="value-card">
+                    <span class="value-icon">💡</span>
+                    <h3>Accessibility for All</h3>
+                    <p>Quality education shouldn't be a privilege of the wealthy. We're committed to keeping our platform affordable and accessible across all geographies.</p>
+                </div>
+                <div class="value-card">
+                    <span class="value-icon">🔄</span>
+                    <h3>Continuous Innovation</h3>
+                    <p>Education evolves. Exams evolve. We evolve. We ship new features based on actual student and institute feedback, not boardroom assumptions.</p>
+                </div>
+                <div class="value-card">
+                    <span class="value-icon">💎</span>
+                    <h3>Transparency & Honesty</h3>
+                    <p>No fake reviews. No manipulated success rates. No hidden fees. We present data honestly and let our work speak for itself.</p>
+                </div>
+                <div class="value-card">
+                    <span class="value-icon">❤️</span>
+                    <h3>Genuine Care</h3>
+                    <p>Every student deserves respectful treatment and genuine support, regardless of their current performance. We create a judgment-free environment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Stats -->
+    <section class="impact-section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Our Impact</span>
+                <h2>Making a Difference Every Day</h2>
+            </div>
+            <div class="impact-stats">
+                <div class="impact-stat">
+                    <div class="impact-number">100+</div>
+                    <div class="impact-label">IIT & AIIMS Alumni</div>
+                </div>
+                <div class="impact-stat">
+                    <div class="impact-number">50K+</div>
+                    <div class="impact-label">Students Empowered</div>
+                </div>
+                <div class="impact-stat">
+                    <div class="impact-number">200+</div>
+                    <div class="impact-label">Partner Institutes</div>
+                </div>
+                <div class="impact-stat">
+                    <div class="impact-number">30+</div>
+                    <div class="impact-label">Years Combined Expertise</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Ready to Join the Examyfi Family?</h2>
+            <p>Whether you're a student beginning your NEET/JEE journey or an institute looking to transform your teaching—there's a place for you here.</p>
+            <div class="cta-buttons">
+                <a href="index.html#students" class="btn btn-primary">Start Your Journey</a>
+                <a href="index.html#contact" class="btn btn-primary">Partner With Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="Picsart_25-11-25_16-02-38-714.png" alt="Examyfi" class="footer-logo">
+                    <p class="footer-tagline">Exam Simplified</p>
+                    <p>Empowering students and institutes with smart technology and expert mentorship for NEET & JEE success.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#students">For Students</a></li>
+                        <li><a href="index.html#institutes">For Institutes</a></li>
+                        <li><a href="index.html#pricing">Pricing</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">NEET Syllabus</a></li>
+                        <li><a href="#">JEE Syllabus</a></li>
+                        <li><a href="#">Previous Papers</a></li>
+                        <li><a href="#">Success Stories</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li style="color: rgba(255, 255, 255, 0.7); line-height: 1.8;">
+                            <strong style="color: white;">For Students:</strong><br>
+                            📱 +91-XXXXX-XXXXX<br>
+                            📧 students@examyfi.com<br><br>
+                            <strong style="color: white;">For Institutes:</strong><br>
+                            📱 +91-XXXXX-XXXXX<br>
+                            📧 institutes@examyfi.com
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2025 Examyfi. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Refund Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

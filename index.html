@@ -1,0 +1,3483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examyfi — Exam Simplified | NEET & JEE Preparation Platform</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #1B246D;
+            --royal-blue: #27408A;
+            --gold: #DDA625;
+            --dark-gold: #B38C35;
+            --light-gray: #F2F2F2;
+            --white: #FFFFFF;
+            --text-dark: #1a1a1a;
+            --text-gray: #666;
+            --gradient-primary: linear-gradient(135deg, #1B246D 0%, #27408A 100%);
+            --gradient-gold: linear-gradient(135deg, #DDA625 0%, #B38C35 100%);
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+            --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background: var(--white);
+        }
+
+        /* Navigation - Glass Morphism */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            animation: slideDown 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-gold);
+            transition: all 0.3s;
+            transform: translateX(-50%);
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.8rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-primary {
+            background: var(--gradient-gold);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(221, 166, 37, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(221, 166, 37, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--navy);
+            border: 2px solid var(--navy);
+        }
+
+        .btn-outline:hover {
+            background: var(--navy);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section - Modern Split Design */
+        .hero {
+            margin-top: 80px;
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(221, 166, 37, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -200px;
+            right: -200px;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(27, 36, 109, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            bottom: -100px;
+            left: -100px;
+            animation: float 15s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(30px, 30px) scale(1.1); }
+        }
+
+        .hero-content {
+            padding: 4rem 2rem 4rem 4rem;
+            position: relative;
+            z-index: 1;
+            animation: fadeInLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, rgba(221, 166, 37, 0.1), rgba(221, 166, 37, 0.2));
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--dark-gold);
+            margin-bottom: 2rem;
+            border: 1px solid rgba(221, 166, 37, 0.3);
+        }
+
+        .hero h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 4rem;
+            font-weight: 900;
+            color: var(--navy);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -2px;
+        }
+
+        .hero h1 .highlight {
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-gray);
+            margin-bottom: 2.5rem;
+            line-height: 1.7;
+            max-width: 600px;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-number {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            font-weight: 500;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .cta-note {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            margin-top: 1rem;
+        }
+
+        .hero-visual {
+            padding: 4rem 4rem 4rem 2rem;
+            position: relative;
+            z-index: 1;
+            animation: fadeInRight 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .visual-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            position: relative;
+        }
+
+        .visual-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .visual-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .visual-card:nth-child(1) {
+            animation: floatCard 6s ease-in-out infinite;
+        }
+
+        .visual-card:nth-child(2) {
+            animation: floatCard 6s ease-in-out infinite 1.5s;
+        }
+
+        .visual-card:nth-child(3) {
+            animation: floatCard 6s ease-in-out infinite 3s;
+        }
+
+        .visual-card:nth-child(4) {
+            animation: floatCard 6s ease-in-out infinite 4.5s;
+        }
+
+        @keyframes floatCard {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-icon.blue {
+            background: linear-gradient(135deg, rgba(27, 36, 109, 0.1), rgba(39, 64, 138, 0.2));
+        }
+
+        .card-icon.gold {
+            background: linear-gradient(135deg, rgba(221, 166, 37, 0.1), rgba(179, 140, 53, 0.2));
+        }
+
+        .visual-card h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .visual-card p {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+
+        /* Trust Partners Section - Clean Logo Display */
+        .partners-section {
+            padding: 4rem 2rem;
+            background: var(--white);
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .partners-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .partners-heading {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--text-gray);
+            font-weight: 600;
+            margin-bottom: 3rem;
+        }
+
+        .partners-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5rem;
+            flex-wrap: wrap;
+            margin-bottom: 4rem;
+        }
+
+        .partner-logo {
+            height: 80px;
+            width: auto;
+            opacity: 0.9;
+            transition: all 0.3s;
+            filter: grayscale(0%);
+        }
+
+        .partner-logo:hover {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+
+        .trust-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .trust-stat {
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .trust-stat-number {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3rem;
+            font-weight: 900;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .trust-stat-label {
+            font-size: 0.95rem;
+            color: var(--text-gray);
+            font-weight: 500;
+        }
+
+        /* Section Styling - Card Based */
+        section {
+            padding: 6rem 2rem;
+        }
+
+        .section-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(27, 36, 109, 0.1), rgba(39, 64, 138, 0.15));
+            color: var(--navy);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-header h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Feature Cards - Modern Design */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-gold);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s;
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient-primary);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 8px 20px rgba(27, 36, 109, 0.2);
+        }
+
+        .feature-card h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: var(--text-gray);
+            line-height: 1.8;
+        }
+
+        /* Alternating Content Sections */
+        .content-section {
+            background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%);
+        }
+
+        .content-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-bottom: 5rem;
+        }
+
+        .content-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .content-row:nth-child(even) {
+            direction: rtl;
+        }
+
+        .content-row:nth-child(even) > * {
+            direction: ltr;
+        }
+
+        .content-image {
+            position: relative;
+        }
+
+        .content-img-wrapper {
+            background: var(--gradient-primary);
+            border-radius: 24px;
+            padding: 3rem;
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content-img-wrapper::before {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            top: -50px;
+            right: -50px;
+        }
+
+        .content-img-wrapper .icon {
+            font-size: 8rem;
+            opacity: 0.3;
+            color: var(--white);
+        }
+
+        .content-text h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .content-text p {
+            font-size: 1.05rem;
+            color: var(--text-gray);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-top: 2rem;
+        }
+
+        .feature-list li {
+            padding: 0.75rem 0;
+            color: var(--text-dark);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .feature-list li::before {
+            content: '✓';
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background: var(--gradient-gold);
+            color: var(--white);
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        /* Support Ecosystem Section - Redesigned */
+        .support-ecosystem {
+            background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%);
+            padding: 6rem 2rem;
+        }
+
+        .ecosystem-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .ecosystem-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .ecosystem-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .ecosystem-card.card-large {
+            grid-column: span 3;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--royal-blue) 100%);
+            color: var(--white);
+        }
+
+        .ecosystem-card.card-featured {
+            position: relative;
+            background: linear-gradient(135deg, #fff8e1 0%, #ffffff 100%);
+            border: 2px solid var(--gold);
+            grid-column: span 3;
+        }
+
+        .ecosystem-card.card-featured .mentor-benefits {
+            max-width: 100%;
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .ecosystem-card.card-featured .content-wrapper {
+            display: grid;
+            grid-template-columns: 1.5fr 2fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .ecosystem-card.card-featured h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .ecosystem-card.card-featured .ecosystem-card-header {
+            margin-bottom: 0;
+        }
+
+        .ecosystem-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .ecosystem-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+        }
+
+        .ecosystem-icon.gold {
+            background: linear-gradient(135deg, rgba(221, 166, 37, 0.1), rgba(179, 140, 53, 0.2));
+        }
+
+        .ecosystem-icon.blue {
+            background: linear-gradient(135deg, rgba(27, 36, 109, 0.1), rgba(39, 64, 138, 0.2));
+        }
+
+        .ecosystem-icon.gradient {
+            background: var(--gradient-gold);
+        }
+
+        .card-large .ecosystem-icon {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .ecosystem-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: var(--gradient-gold);
+            color: var(--white);
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(221, 166, 37, 0.4);
+        }
+
+        .ecosystem-card h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--navy);
+        }
+
+        .card-large h3 {
+            color: var(--white);
+        }
+
+        .ecosystem-card p {
+            color: var(--text-gray);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-large p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .ecosystem-features {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .mini-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+        }
+
+        .mini-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .mini-feature strong {
+            display: block;
+            font-size: 0.95rem;
+            margin-bottom: 0.25rem;
+            color: var(--white);
+        }
+
+        .mini-feature p {
+            font-size: 0.85rem;
+            margin: 0;
+            opacity: 0.8;
+        }
+
+        .card-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: auto;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .stat-mini {
+            text-align: center;
+        }
+
+        .stat-mini strong {
+            display: block;
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--gold);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-mini span {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        .ecosystem-list {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .ecosystem-list li {
+            padding: 0.75rem 0;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .ecosystem-list li::before {
+            content: '✓';
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            background: rgba(221, 166, 37, 0.15);
+            color: var(--gold);
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+
+        .card-highlight {
+            margin-top: auto;
+            padding: 1rem;
+            background: linear-gradient(135deg, rgba(221, 166, 37, 0.1), rgba(179, 140, 53, 0.15));
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid rgba(221, 166, 37, 0.3);
+        }
+
+        .card-highlight strong {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--dark-gold);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .mentor-benefits {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .benefit-box {
+            padding: 1rem;
+            background: rgba(221, 166, 37, 0.05);
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid rgba(221, 166, 37, 0.2);
+            transition: all 0.3s;
+        }
+
+        .benefit-box:hover {
+            background: rgba(221, 166, 37, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .benefit-box span {
+            display: block;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .benefit-box strong {
+            font-size: 0.9rem;
+            color: var(--navy);
+        }
+
+        .card-featured .btn {
+            margin-top: auto;
+        }
+
+        .ecosystem-stats-bar {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-md);
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .ecosystem-stat {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-align: left;
+        }
+
+        .stat-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, rgba(221, 166, 37, 0.1), rgba(179, 140, 53, 0.2));
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            flex-shrink: 0;
+        }
+
+        .ecosystem-stat strong {
+            display: block;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--navy);
+            line-height: 1;
+            margin-bottom: 0.25rem;
+        }
+
+        .ecosystem-stat span {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+        }
+
+        /* Testimonials - Stacked Card Carousel Design */
+        .testimonials-section {
+            background: var(--white);
+            position: relative;
+            overflow: hidden;
+            padding: 6rem 2rem;
+        }
+
+        .testimonials-section::before {
+            content: '';
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(27, 36, 109, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -200px;
+            left: -200px;
+            animation: float 25s ease-in-out infinite;
+        }
+
+        .testimonials-section::after {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(221, 166, 37, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            bottom: -150px;
+            right: -150px;
+            animation: float 20s ease-in-out infinite reverse;
+        }
+
+        .testimonials-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonials-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .testimonials-carousel-main {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        /* Left Side - Student List */
+        .students-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .student-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            background: var(--white);
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border: 2px solid transparent;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .student-item:hover {
+            transform: translateX(8px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .student-item.active {
+            background: linear-gradient(135deg, var(--navy), var(--royal-blue));
+            border-color: var(--gold);
+            transform: translateX(12px);
+            box-shadow: 0 12px 35px rgba(27, 36, 109, 0.3);
+        }
+
+        .student-avatar-small {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--gradient-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--white);
+            flex-shrink: 0;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(221, 166, 37, 0.3);
+        }
+
+        .student-item.active .student-avatar-small {
+            background: var(--gradient-gold);
+            box-shadow: 0 6px 20px rgba(221, 166, 37, 0.5);
+        }
+
+        .student-info-small {
+            flex: 1;
+        }
+
+        .student-name-small {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 0.25rem;
+            transition: color 0.3s;
+        }
+
+        .student-item.active .student-name-small {
+            color: var(--white);
+        }
+
+        .student-achievement-small {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            transition: color 0.3s;
+        }
+
+        .student-item.active .student-achievement-small {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .student-arrow {
+            font-size: 1.5rem;
+            color: var(--gold);
+            opacity: 0;
+            transition: all 0.3s;
+        }
+
+        .student-item.active .student-arrow {
+            opacity: 1;
+        }
+
+        /* Right Side - Testimonial Card */
+        .testimonial-showcase {
+            position: relative;
+            min-height: 500px;
+        }
+
+        .testimonial-card-large {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
+            padding: 3.5rem;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            border: 2px solid rgba(221, 166, 37, 0.2);
+            opacity: 0;
+            transform: translateY(30px) scale(0.95);
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            pointer-events: none;
+        }
+
+        .testimonial-card-large.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            pointer-events: all;
+        }
+
+        .testimonial-card-large::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: var(--gradient-gold);
+            border-radius: 24px 24px 0 0;
+        }
+
+        .quote-mark {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 25px rgba(27, 36, 109, 0.2);
+            position: relative;
+        }
+
+        .quote-mark::after {
+            content: '"';
+            font-size: 3rem;
+            color: var(--white);
+            font-family: Georgia, serif;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .rating-stars {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .star {
+            font-size: 1.5rem;
+            color: var(--gold);
+            animation: starPop 0.4s ease backwards;
+        }
+
+        .star:nth-child(1) { animation-delay: 0.1s; }
+        .star:nth-child(2) { animation-delay: 0.2s; }
+        .star:nth-child(3) { animation-delay: 0.3s; }
+        .star:nth-child(4) { animation-delay: 0.4s; }
+        .star:nth-child(5) { animation-delay: 0.5s; }
+
+        @keyframes starPop {
+            0% { transform: scale(0) rotate(-180deg); opacity: 0; }
+            50% { transform: scale(1.3) rotate(0deg); }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        }
+
+        .testimonial-text-large {
+            font-size: 1.3rem;
+            line-height: 1.9;
+            color: var(--text-dark);
+            margin-bottom: 2.5rem;
+            font-weight: 400;
+            position: relative;
+        }
+
+        .testimonial-author-large {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding-top: 2rem;
+            border-top: 2px solid rgba(0, 0, 0, 0.08);
+        }
+
+        .author-avatar-large {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--white);
+            flex-shrink: 0;
+            box-shadow: 0 6px 20px rgba(27, 36, 109, 0.25);
+        }
+
+        .author-details-large h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .author-achievement-large {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .achievement-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, rgba(221, 166, 37, 0.15), rgba(179, 140, 53, 0.2));
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--dark-gold);
+            margin-top: 0.5rem;
+        }
+
+        .achievement-badge::before {
+            content: '🏆';
+            font-size: 1.2rem;
+        }
+
+        /* Navigation Arrows */
+        .testimonial-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 55px;
+            height: 55px;
+            background: var(--white);
+            border: 2px solid var(--navy);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 10;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-nav:hover {
+            background: var(--navy);
+            border-color: var(--navy);
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 6px 25px rgba(27, 36, 109, 0.3);
+        }
+
+        .testimonial-nav svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--navy);
+            transition: fill 0.3s;
+        }
+
+        .testimonial-nav:hover svg {
+            fill: var(--white);
+        }
+
+        .testimonial-nav.prev {
+            left: -25px;
+        }
+
+        .testimonial-nav.next {
+            right: -25px;
+        }
+
+        /* Progress Indicators */
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-top: 3rem;
+        }
+
+        .indicator-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(27, 36, 109, 0.2);
+            cursor: pointer;
+            transition: all 0.4s;
+        }
+
+        .indicator-dot.active {
+            width: 40px;
+            border-radius: 6px;
+            background: var(--gradient-gold);
+        }
+
+        .indicator-dot:hover {
+            background: var(--gold);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .testimonials-carousel-main {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .students-list {
+                max-width: 600px;
+                margin: 0 auto;
+            }
+
+            .testimonial-nav.prev {
+                left: 10px;
+            }
+
+            .testimonial-nav.next {
+                right: 10px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .testimonials-section {
+                padding: 4rem 1rem;
+            }
+
+            .students-list {
+                display: none;
+            }
+
+            .testimonials-carousel-main {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonial-showcase {
+                min-height: 450px;
+            }
+
+            .testimonial-card-large {
+                padding: 2rem;
+            }
+
+            .testimonial-text-large {
+                font-size: 1.1rem;
+            }
+
+            .author-details-large h3 {
+                font-size: 1.2rem;
+            }
+
+            .testimonial-nav {
+                width: 45px;
+                height: 45px;
+            }
+
+            .testimonial-nav svg {
+                width: 20px;
+                height: 20px;
+            }
+
+            .carousel-indicators {
+                display: flex;
+            }
+        }
+
+        /* Pricing Cards - Modern Style */
+        .pricing-section {
+            background: linear-gradient(135deg, #1B246D 0%, #27408A 100%);
+            color: var(--white);
+        }
+
+        .pricing-section .section-header h2,
+        .pricing-section .section-tag {
+            color: var(--white);
+        }
+
+        .pricing-section .section-header p {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border-radius: 24px;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.4s;
+            position: relative;
+            border: 2px solid transparent;
+        }
+
+        .pricing-card.featured {
+            transform: scale(1.05);
+            border-color: var(--gold);
+            background: var(--white);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px) scale(1.02);
+        }
+
+        .pricing-card.featured:hover {
+            transform: translateY(-10px) scale(1.07);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gradient-gold);
+            color: var(--white);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(221, 166, 37, 0.4);
+        }
+
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .pricing-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+
+        .pricing-price {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--navy);
+            line-height: 1;
+        }
+
+        .pricing-price span {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--text-gray);
+        }
+
+        .pricing-period {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            margin-top: 0.5rem;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-features li {
+            padding: 0.75rem 0;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 22px;
+            height: 22px;
+            background: rgba(221, 166, 37, 0.15);
+            color: var(--gold);
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+
+        .pricing-card .btn {
+            width: 100%;
+            justify-content: center;
+        }
+
+        /* Form Section - Modern Design */
+        .form-section {
+            background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%);
+        }
+
+        .form-wrapper {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 3rem;
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 24px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s;
+            background: var(--white);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(221, 166, 37, 0.1);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .checkbox-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            cursor: pointer;
+        }
+
+        .form-sidebar {
+            background: linear-gradient(135deg, var(--navy), var(--royal-blue));
+            padding: 2.5rem;
+            border-radius: 20px;
+            color: var(--white);
+        }
+
+        .form-sidebar h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .benefit-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .benefit-text {
+            flex: 1;
+        }
+
+        .benefit-text strong {
+            display: block;
+            margin-bottom: 0.25rem;
+            font-size: 0.95rem;
+        }
+
+        .benefit-text span {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        .contact-box {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .contact-box p {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        /* FAQ - Accordion Style */
+        .faq-section {
+            background: var(--white);
+        }
+
+        .faq-list {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%);
+            margin-bottom: 1rem;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 1.5rem 2rem;
+            background: none;
+            border: none;
+            text-align: left;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--navy);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s;
+        }
+
+        .faq-question:hover {
+            background: rgba(221, 166, 37, 0.05);
+        }
+
+        .faq-icon {
+            width: 30px;
+            height: 30px;
+            background: var(--gradient-gold);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            transition: transform 0.3s;
+            flex-shrink: 0;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            padding: 0 2rem 1.5rem;
+            color: var(--text-gray);
+            line-height: 1.8;
+            display: none;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--gradient-primary);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .cta-section .section-header h2 {
+            color: var(--white);
+        }
+
+        .cta-section .section-header p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .cta-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .cta-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border-radius: 24px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s;
+        }
+
+        .cta-box:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .cta-box h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .cta-box p {
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-box .btn {
+            background: var(--white);
+            color: var(--navy);
+        }
+
+        .cta-box .btn:hover {
+            background: var(--gold);
+            color: var(--white);
+        }
+
+        /* Footer */
+        footer {
+            background: #0a0f2e;
+            color: var(--white);
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .footer-logo {
+            height: 60px;
+            width: auto;
+        }
+
+        .footer-tagline {
+            color: var(--gold);
+            font-size: 1.1rem;
+            font-weight: 600;
+            font-style: italic;
+        }
+
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.7;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: var(--white);
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            background: var(--gold);
+            transform: translateY(-3px);
+        }
+
+        .footer-column h4 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-column ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--navy);
+            border-radius: 3px;
+            transition: all 0.3s;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translateY(10px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translateY(-10px);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            width: 100%;
+            height: calc(100vh - 80px);
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 999;
+            padding: 2rem;
+            overflow-y: auto;
+            animation: slideDown 0.3s ease;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+        }
+
+        .mobile-menu ul li {
+            margin-bottom: 1.5rem;
+        }
+
+        .mobile-menu ul li a {
+            color: var(--navy);
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: block;
+            padding: 0.75rem;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .mobile-menu ul li a:hover {
+            background: var(--light-gray);
+            padding-left: 1.5rem;
+        }
+
+        .mobile-menu-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 24px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            animation: scaleIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes scaleIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: rgba(0, 0, 0, 0.05);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-gray);
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-close:hover {
+            background: rgba(0, 0, 0, 0.1);
+            transform: rotate(90deg);
+        }
+
+        .modal-content h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s;
+        }
+
+        .modal-input:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(221, 166, 37, 0.1);
+        }
+
+        .privacy-note {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s, transform 0.6s;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-visual {
+                padding: 2rem;
+            }
+
+            .features-grid,
+            .testimonials-grid,
+            .pricing-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .content-row {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .content-row:nth-child(even) {
+                direction: ltr;
+            }
+
+            .trust-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .ecosystem-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .ecosystem-card.card-large {
+                grid-column: span 2;
+            }
+
+            .ecosystem-card.card-featured {
+                grid-column: span 2;
+            }
+
+            .ecosystem-card.card-featured .content-wrapper {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .ecosystem-card.card-featured .mentor-benefits {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .ecosystem-stats-bar {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .nav-actions {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .features-grid,
+            .testimonials-grid,
+            .pricing-grid,
+            .cta-grid,
+            .form-wrapper,
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+
+            .visual-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .mentor-benefits {
+                grid-template-columns: 1fr;
+            }
+
+            .ecosystem-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .ecosystem-card.card-large {
+                grid-column: span 1;
+            }
+
+            .ecosystem-card.card-featured {
+                grid-column: span 1;
+            }
+
+            .ecosystem-card.card-featured .content-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .ecosystem-card.card-featured .mentor-benefits {
+                grid-template-columns: 1fr;
+            }
+
+            .ecosystem-stats-bar {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .card-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo-container">
+                <img src="Picsart_25-11-25_16-02-38-714.png" alt="Examyfi Logo" class="logo-img">
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#students">For Students</a></li>
+                <li><a href="#institutes">For Institutes</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="btn btn-primary" onclick="openModal()">Sign Up</button>
+                <a href="#contact" class="btn btn-outline">Request Demo</a>
+            </div>
+            <div class="hamburger" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <ul>
+                <li><a href="#students" onclick="toggleMobileMenu()">For Students</a></li>
+                <li><a href="#institutes" onclick="toggleMobileMenu()">For Institutes</a></li>
+                <li><a href="#features" onclick="toggleMobileMenu()">Features</a></li>
+                <li><a href="#pricing" onclick="toggleMobileMenu()">Pricing</a></li>
+                <li><a href="#about" onclick="toggleMobileMenu()">About</a></li>
+            </ul>
+            <div class="mobile-menu-actions">
+                <button class="btn btn-primary" onclick="openModal(); toggleMobileMenu();">Sign Up</button>
+                <a href="#contact" class="btn btn-outline" onclick="toggleMobileMenu()">Request Demo</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                ⚡ Trusted by 50,000+ Students Nationwide
+            </div>
+            <h1>
+                Crack NEET & JEE with <span class="highlight">Expert Guidance</span>
+            </h1>
+            <p class="hero-subtitle">
+                Smart preparation platform combining 30+ years of teaching excellence with AI-powered analytics. Get personalized study plans, unlimited practice tests, and complete admission support.
+            </p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">30+</span>
+                    <span class="stat-label">NEET/JEE Toppers</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">200+</span>
+                    <span class="stat-label">Partner Institutes</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">+120</span>
+                    <span class="stat-label">Avg Score Jump</span>
+                </div>
+            </div>
+            <div class="hero-cta">
+                <button class="btn btn-primary" onclick="openModal()">Start Free Trial →</button>
+                <a href="#features" class="btn btn-outline">Explore Features</a>
+            </div>
+            <p class="cta-note">✓ No credit card required • ✓ 7-day Pro access</p>
+        </div>
+        <div class="hero-visual">
+            <div class="visual-cards">
+                <div class="visual-card">
+                    <div class="card-icon blue">📊</div>
+                    <h3>Performance Analytics</h3>
+                    <p>Track every topic, identify gaps instantly</p>
+                </div>
+                <div class="visual-card">
+                    <div class="card-icon gold">🎯</div>
+                    <h3>Rank Predictor</h3>
+                    <p>Know where you stand in real-time</p>
+                </div>
+                <div class="visual-card">
+                    <div class="card-icon gold">📝</div>
+                    <h3>Daily Practice</h3>
+                    <p>Fresh questions matching exam patterns</p>
+                </div>
+                <div class="visual-card">
+                    <div class="card-icon blue">👨‍🏫</div>
+                    <h3>Expert Mentors</h3>
+                    <p>1:1 guidance from IIT/AIIMS alumni</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="partners-section">
+        <div class="partners-container">
+            <p class="partners-heading">Powered by Proven Excellence</p>
+            <div class="partners-logos">
+                <img src="17.png" alt="Rehmani30" class="partner-logo">
+                <img src="unnamed.png" alt="Al Amin Mission" class="partner-logo">
+                <img src="15.jpeg" alt="Mission Awareness Foundation" class="partner-logo">
+            </div>
+            <div class="trust-stats">
+                <div class="trust-stat">
+                    <div class="trust-stat-number">30+</div>
+                    <div class="trust-stat-label">Years Combined Experience</div>
+                </div>
+                <div class="trust-stat">
+                    <div class="trust-stat-number">5000+</div>
+                    <div class="trust-stat-label">Success Stories</div>
+                </div>
+                <div class="trust-stat">
+                    <div class="trust-stat-number">150+</div>
+                    <div class="trust-stat-label">AIR Holders Mentored</div>
+                </div>
+                <div class="trust-stat">
+                    <div class="trust-stat-number">₹5Cr+</div>
+                    <div class="trust-stat-label">Scholarships Secured</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Student Features Section -->
+    <section id="students">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">For Students</span>
+                <h2>Everything You Need to Crack NEET & JEE</h2>
+                <p>From your first practice test to final exam day—comprehensive preparation tools designed for success.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Personalized Study Plans</h3>
+                    <p>AI-powered roadmap adapts to your strengths, weaknesses, and target exam date. Smart scheduling that actually works.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">📝</div>
+                    <h3>Unlimited Mock Tests</h3>
+                    <p>Full-length tests, chapter-wise assessments, and daily practice matching exact NEET/JEE patterns and difficulty.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">📊</div>
+                    <h3>Advanced Analytics</h3>
+                    <p>Deep-dive performance reports down to subtopic level. Know exactly what to study next for maximum impact.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🏆</div>
+                    <h3>Live Rank Predictor</h3>
+                    <p>Real-time rank estimation based on performance. Compare yourself with thousands of aspirants nationwide.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">💡</div>
+                    <h3>Instant Doubt Solving</h3>
+                    <p>Get solutions from expert mentors within hours. Video explanations for complex problems included.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">📱</div>
+                    <h3>Study Anywhere</h3>
+                    <p>Full-featured mobile and web apps. Offline test support means no excuses, just results.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expert Support Section - Redesigned -->
+    <section class="support-ecosystem">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Complete Support</span>
+                <h2>Beyond Tests — Your Success Ecosystem</h2>
+                <p>We don't just give you questions. We give you mentorship, guidance, and a complete path to your dream college.</p>
+            </div>
+            
+            <div class="ecosystem-grid">
+                <!-- Card 1: Live Paper Discussions -->
+                <div class="ecosystem-card card-large fade-in">
+                    <div class="ecosystem-card-header">
+                        <div class="ecosystem-icon">🎓</div>
+                        <div class="ecosystem-badge">Weekly</div>
+                    </div>
+                    <h3>Live Paper Discussions by Expert Mentors</h3>
+                    <p>Join live sessions where IIT/AIIMS alumni break down previous year papers, important questions, and tricky concepts. Understand the examiner's mindset.</p>
+                    <div class="ecosystem-features">
+                        <div class="mini-feature">
+                            <span class="mini-icon">📺</span>
+                            <div>
+                                <strong>Interactive Sessions</strong>
+                                <p>Physics, Chemistry, Biology & Math</p>
+                            </div>
+                        </div>
+                        <div class="mini-feature">
+                            <span class="mini-icon">🎯</span>
+                            <div>
+                                <strong>Strategy Building</strong>
+                                <p>Question pattern analysis</p>
+                            </div>
+                        </div>
+                        <div class="mini-feature">
+                            <span class="mini-icon">📹</span>
+                            <div>
+                                <strong>Recorded Access</strong>
+                                <p>Revise anytime you want</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-stats">
+                        <div class="stat-mini">
+                            <strong>500+</strong>
+                            <span>Hours of Content</span>
+                        </div>
+                        <div class="stat-mini">
+                            <strong>15+</strong>
+                            <span>Expert Mentors</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Scholarship Guidance -->
+                <div class="ecosystem-card fade-in">
+                    <div class="ecosystem-card-header">
+                        <div class="ecosystem-icon gold">💰</div>
+                    </div>
+                    <h3>Scholarship & Financial Aid</h3>
+                    <p>Navigate scholarships with expert help. We've helped students secure ₹5 Crores+ in scholarships.</p>
+                    <ul class="ecosystem-list">
+                        <li>State-wise scholarship database</li>
+                        <li>Eligibility checker & guidance</li>
+                        <li>Application support</li>
+                        <li>Post-admission planning</li>
+                    </ul>
+                    <div class="card-highlight">
+                        <strong>₹5 Cr+</strong> Scholarships Secured
+                    </div>
+                </div>
+
+                <!-- Card 3: Admission Counselling -->
+                <div class="ecosystem-card fade-in">
+                    <div class="ecosystem-card-header">
+                        <div class="ecosystem-icon blue">🎯</div>
+                    </div>
+                    <h3>NEET Admission Counselling</h3>
+                    <p>Personalized support during the crucial admission phase. Make smart choices with data-backed insights.</p>
+                    <ul class="ecosystem-list">
+                        <li>Seat matrix analysis</li>
+                        <li>College comparisons</li>
+                        <li>Choice filling strategy</li>
+                        <li>Documentation help</li>
+                    </ul>
+                    <div class="card-highlight">
+                        <strong>All Rounds</strong> AIQ to State Quotas
+                    </div>
+                </div>
+
+                <!-- Card 4: Personal Mentorship -->
+                <div class="ecosystem-card card-featured fade-in">
+                    <div class="featured-badge">Most Valued</div>
+                    <div class="content-wrapper">
+                        <div class="featured-left">
+                            <div class="ecosystem-card-header">
+                                <div class="ecosystem-icon gradient">🤝</div>
+                            </div>
+                            <h3>1:1 Personal Mentor Sessions</h3>
+                            <p>Monthly personalized sessions with experienced mentors. Discuss strategy, manage stress, and plan your career path.</p>
+                        </div>
+                        <div class="mentor-benefits">
+                            <div class="benefit-box">
+                                <span>📊</span>
+                                <strong>Strategy Review</strong>
+                            </div>
+                            <div class="benefit-box">
+                                <span>🧘</span>
+                                <strong>Stress Management</strong>
+                            </div>
+                            <div class="benefit-box">
+                                <span>🎯</span>
+                                <strong>Goal Setting</strong>
+                            </div>
+                            <div class="benefit-box">
+                                <span>💡</span>
+                                <strong>Career Planning</strong>
+                            </div>
+                        </div>
+                        <div class="featured-right">
+                            <button class="btn btn-primary" onclick="openModal()">Book Your Session →</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Bar -->
+            <div class="ecosystem-stats-bar fade-in">
+                <div class="ecosystem-stat">
+                    <div class="stat-icon">👥</div>
+                    <div>
+                        <strong>10,000+</strong>
+                        <span>Students Guided</span>
+                    </div>
+                </div>
+                <div class="ecosystem-stat">
+                    <div class="stat-icon">⭐</div>
+                    <div>
+                        <strong>4.9/5</strong>
+                        <span>Support Rating</span>
+                    </div>
+                </div>
+                <div class="ecosystem-stat">
+                    <div class="stat-icon">⏱️</div>
+                    <div>
+                        <strong>&lt;2 Hours</strong>
+                        <span>Avg Response Time</span>
+                    </div>
+                </div>
+                <div class="ecosystem-stat">
+                    <div class="stat-icon">🎓</div>
+                    <div>
+                        <strong>100%</strong>
+                        <span>Admission Success Rate</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section - Redesigned -->
+    <section class="testimonials-section" id="testimonials">
+        <div class="testimonials-container">
+            <div class="section-header testimonials-header">
+                <span class="section-tag">Success Stories</span>
+                <h2>Students Who Made It</h2>
+                <p>Real stories from students who transformed their NEET/JEE journey with Examyfi.</p>
+            </div>
+            
+            <div class="testimonials-carousel-main">
+                <!-- Left Side - Student List -->
+                <div class="students-list">
+                    <div class="student-item active" onclick="showTestimonial(0)">
+                        <div class="student-avatar-small">PS</div>
+                        <div class="student-info-small">
+                            <div class="student-name-small">Priya Sharma</div>
+                            <div class="student-achievement-small">AIR 247, NEET 2024</div>
+                        </div>
+                        <div class="student-arrow">→</div>
+                    </div>
+                    
+                    <div class="student-item" onclick="showTestimonial(1)">
+                        <div class="student-avatar-small">AP</div>
+                        <div class="student-info-small">
+                            <div class="student-name-small">Arjun Patel</div>
+                            <div class="student-achievement-small">99.2%ile, JEE Mains 2024</div>
+                        </div>
+                        <div class="student-arrow">→</div>
+                    </div>
+                    
+                    <div class="student-item" onclick="showTestimonial(2)">
+                        <div class="student-avatar-small">FK</div>
+                        <div class="student-info-small">
+                            <div class="student-name-small">Fatima Khan</div>
+                            <div class="student-achievement-small">AIIMS Delhi</div>
+                        </div>
+                        <div class="student-arrow">→</div>
+                    </div>
+                    
+                    <div class="student-item" onclick="showTestimonial(3)">
+                        <div class="student-avatar-small">RK</div>
+                        <div class="student-info-small">
+                            <div class="student-name-small">Rahul Kumar</div>
+                            <div class="student-achievement-small">AIR 589, NEET 2024</div>
+                        </div>
+                        <div class="student-arrow">→</div>
+                    </div>
+                    
+                    <div class="student-item" onclick="showTestimonial(4)">
+                        <div class="student-avatar-small">SK</div>
+                        <div class="student-info-small">
+                            <div class="student-name-small">Sneha Kulkarni</div>
+                            <div class="student-achievement-small">GMC Nagpur</div>
+                        </div>
+                        <div class="student-arrow">→</div>
+                    </div>
+                    
+                    <div class="student-item" onclick="showTestimonial(5)">
+                        <div class="student-avatar-small">VG</div>
+                        <div class="student-info-small">
+                            <div class="student-name-small">Vikram Gupta</div>
+                            <div class="student-achievement-small">97.8%ile, JEE Mains 2024</div>
+                        </div>
+                        <div class="student-arrow">→</div>
+                    </div>
+                </div>
+
+                <!-- Right Side - Testimonial Display -->
+                <div class="testimonial-showcase">
+                    <button class="testimonial-nav prev" onclick="navigateTestimonial(-1)">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+                        </svg>
+                    </button>
+
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial-card-large active" data-index="0">
+                        <div class="quote-mark"></div>
+                        <div class="rating-stars">
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                        </div>
+                        <p class="testimonial-text-large">
+                            "The daily practice system kept me consistent. The analytics showed me I was weak in Organic Chemistry—I focused there and saw a 40-mark jump. The live paper discussions were absolute game-changers for understanding complex concepts."
+                        </p>
+                        <div class="testimonial-author-large">
+                            <div class="author-avatar-large">PS</div>
+                            <div class="author-details-large">
+                                <h3>Priya Sharma</h3>
+                                <p class="author-achievement-large">All India Rank 247</p>
+                                <div class="achievement-badge">NEET 2024 Qualifier</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial-card-large" data-index="1">
+                        <div class="quote-mark"></div>
+                        <div class="rating-stars">
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                        </div>
+                        <p class="testimonial-text-large">
+                            "I was directionless before Examyfi. The personalized study plan and 1:1 mentoring helped me structure my preparation. The rank predictor kept me motivated to push harder every single day. Best decision I made!"
+                        </p>
+                        <div class="testimonial-author-large">
+                            <div class="author-avatar-large">AP</div>
+                            <div class="author-details-large">
+                                <h3>Arjun Patel</h3>
+                                <p class="author-achievement-large">99.2 Percentile</p>
+                                <div class="achievement-badge">JEE Mains 2024</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial-card-large" data-index="2">
+                        <div class="quote-mark"></div>
+                        <div class="rating-stars">
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                        </div>
+                        <p class="testimonial-text-large">
+                            "The scholarship guidance saved my family lakhs of rupees. The admission counselling team helped me make smart choices during a very stressful time. It's not just an app—it's a complete support system that cares."
+                        </p>
+                        <div class="testimonial-author-large">
+                            <div class="author-avatar-large">FK</div>
+                            <div class="author-details-large">
+                                <h3>Fatima Khan</h3>
+                                <p class="author-achievement-large">Selected for AIIMS Delhi</p>
+                                <div class="achievement-badge">NEET 2024</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 4 -->
+                    <div class="testimonial-card-large" data-index="3">
+                        <div class="quote-mark"></div>
+                        <div class="rating-stars">
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                        </div>
+                        <p class="testimonial-text-large">
+                            "The mock tests felt exactly like the real exam. The instant feedback helped me improve rapidly. Within 3 months, my score jumped from 450 to 580. The mentors were available whenever I needed them, even late at night!"
+                        </p>
+                        <div class="testimonial-author-large">
+                            <div class="author-avatar-large">RK</div>
+                            <div class="author-details-large">
+                                <h3>Rahul Kumar</h3>
+                                <p class="author-achievement-large">All India Rank 589</p>
+                                <div class="achievement-badge">NEET 2024 Qualifier</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 5 -->
+                    <div class="testimonial-card-large" data-index="4">
+                        <div class="quote-mark"></div>
+                        <div class="rating-stars">
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                        </div>
+                        <p class="testimonial-text-large">
+                            "Coming from a small town, I lacked proper guidance. Examyfi's live sessions and counselling support were invaluable. The admission guidance helped me choose the right college without any confusion. Forever grateful!"
+                        </p>
+                        <div class="testimonial-author-large">
+                            <div class="author-avatar-large">SK</div>
+                            <div class="author-details-large">
+                                <h3>Sneha Kulkarni</h3>
+                                <p class="author-achievement-large">Government Medical College</p>
+                                <div class="achievement-badge">GMC Nagpur</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 6 -->
+                    <div class="testimonial-card-large" data-index="5">
+                        <div class="quote-mark"></div>
+                        <div class="rating-stars">
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                            <span class="star">⭐</span>
+                        </div>
+                        <p class="testimonial-text-large">
+                            "The topic-wise analytics were spot-on. I could see exactly where I was losing marks and fix it immediately. The rank predictor kept me grounded and focused on improvement. Worth every rupee invested!"
+                        </p>
+                        <div class="testimonial-author-large">
+                            <div class="author-avatar-large">VG</div>
+                            <div class="author-details-large">
+                                <h3>Vikram Gupta</h3>
+                                <p class="author-achievement-large">97.8 Percentile</p>
+                                <div class="achievement-badge">JEE Mains 2024</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="testimonial-nav next" onclick="navigateTestimonial(1)">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Carousel Indicators -->
+            <div class="carousel-indicators">
+                <div class="indicator-dot active" onclick="showTestimonial(0)"></div>
+                <div class="indicator-dot" onclick="showTestimonial(1)"></div>
+                <div class="indicator-dot" onclick="showTestimonial(2)"></div>
+                <div class="indicator-dot" onclick="showTestimonial(3)"></div>
+                <div class="indicator-dot" onclick="showTestimonial(4)"></div>
+                <div class="indicator-dot" onclick="showTestimonial(5)"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Institute Features -->
+    <section id="institutes" class="content-section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">For Institutes</span>
+                <h2>Complete Management Solution for Coaching Centers</h2>
+                <p>Powerful tools to manage tests, track performance, and deliver better results—all in one platform.</p>
+            </div>
+
+            <div class="content-row fade-in">
+                <div class="content-image">
+                    <div class="content-img-wrapper">
+                        <div class="icon">📄</div>
+                    </div>
+                </div>
+                <div class="content-text">
+                    <h3>Unlimited Question Bank & Paper Generation</h3>
+                    <p>Create unlimited question papers in minutes—PDF printable or online. Access 50,000+ curated questions aligned with latest NEET/JEE patterns.</p>
+                    <ul class="feature-list">
+                        <li>Auto-generate papers by chapter, topic, and difficulty</li>
+                        <li>Instant PDF download or direct online deployment</li>
+                        <li>Custom marking schemes and time limits</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-row fade-in">
+                <div class="content-image">
+                    <div class="content-img-wrapper">
+                        <div class="icon">📷</div>
+                    </div>
+                </div>
+                <div class="content-text">
+                    <h3>Revolutionary OMR Scanner Integration</h3>
+                    <p>Bridge offline and online seamlessly. Conduct traditional pen-paper tests and scan OMR sheets using any smartphone. Results in seconds with 99.9% accuracy.</p>
+                    <ul class="feature-list">
+                        <li>Mobile-based OMR scanning—no special equipment needed</li>
+                        <li>Bulk upload support for large test batches</li>
+                        <li>Unified analytics combining online and offline data</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-row fade-in">
+                <div class="content-image">
+                    <div class="content-img-wrapper">
+                        <div class="icon">🎯</div>
+                    </div>
+                </div>
+                <div class="content-text">
+                    <h3>SWOT Analysis for Every Student</h3>
+                    <p>Comprehensive profiles identifying Strengths, Weaknesses, Opportunities, and Threats. Data-driven insights for targeted intervention and personalized coaching.</p>
+                    <ul class="feature-list">
+                        <li>Topic-wise strength and weakness mapping</li>
+                        <li>At-risk student early warning system</li>
+                        <li>Progress trajectory and growth tracking</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-row fade-in">
+                <div class="content-image">
+                    <div class="content-img-wrapper">
+                        <div class="icon">🏢</div>
+                    </div>
+                </div>
+                <div class="content-text">
+                    <h3>Multi-Branch & Batch Management</h3>
+                    <p>Manage multiple branches, courses, and batches from one admin panel. Role-based access for faculty, managers, and coordinators with centralized data control.</p>
+                    <ul class="feature-list">
+                        <li>Hierarchical access control and permissions</li>
+                        <li>Branch-wise performance comparisons</li>
+                        <li>Centralized student database with local autonomy</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing-section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Transparent Pricing</span>
+                <h2>Choose Your Plan</h2>
+                <p>Simple pricing that scales with your goals. Upgrade or downgrade anytime.</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card fade-in">
+                    <div class="pricing-header">
+                        <h3 class="pricing-title">Free Plan</h3>
+                        <div class="pricing-price">₹0<span>/month</span></div>
+                        <p class="pricing-period">Perfect to get started</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>5 mock tests per month</li>
+                        <li>Daily practice questions</li>
+                        <li>Basic performance analytics</li>
+                        <li>Mobile & web access</li>
+                        <li>Community doubt forum</li>
+                    </ul>
+                    <button class="btn btn-primary" onclick="openModal()">Get Started</button>
+                </div>
+
+                <div class="pricing-card featured fade-in">
+                    <span class="pricing-badge">Most Popular</span>
+                    <div class="pricing-header">
+                        <h3 class="pricing-title">Pro Plan</h3>
+                        <div class="pricing-price">₹499<span>/month</span></div>
+                        <p class="pricing-period">Save 50% • Original ₹999</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>Everything in Free, PLUS:</li>
+                        <li>Unlimited mock tests</li>
+                        <li>Advanced analytics & rank predictor</li>
+                        <li>Weekly live paper discussions</li>
+                        <li>Monthly 1:1 mentor sessions</li>
+                        <li>Scholarship guidance support</li>
+                        <li>Admission counselling access</li>
+                        <li>Priority doubt solving (within 2 hours)</li>
+                        <li>Downloadable study materials</li>
+                    </ul>
+                    <button class="btn btn-primary" onclick="openModal()">Start 7-Day Free Trial</button>
+                    <p class="cta-note" style="text-align: center; margin-top: 0.75rem; color: var(--text-gray);">No credit card required • Cancel anytime</p>
+                </div>
+
+                <div class="pricing-card fade-in">
+                    <div class="pricing-header">
+                        <h3 class="pricing-title">Institute Plan</h3>
+                        <div class="pricing-price" style="font-size: 2.2rem;">Custom</div>
+                        <p class="pricing-period">Enterprise solution</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>Unlimited question bank access</li>
+                        <li>OMR scanner integration</li>
+                        <li>SWOT analysis for all students</li>
+                        <li>Multi-branch management</li>
+                        <li>White-label branding options</li>
+                        <li>Dedicated account manager</li>
+                        <li>Complete onboarding & training</li>
+                        <li>Priority 24/7 support</li>
+                        <li>Custom integrations available</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-outline">Request Demo</a>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 2.5rem; color: rgba(255, 255, 255, 0.8);">
+                💳 GST included • 🔒 Secure payments • 💰 Money-back guarantee
+            </p>
+        </div>
+    </section>
+
+    <!-- Institute Contact Form -->
+    <section id="contact" class="form-section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Get in Touch</span>
+                <h2>Transform Your Institute Today</h2>
+                <p>Join 200+ institutes using Examyfi to deliver better results and streamlined operations.</p>
+            </div>
+            <div class="form-wrapper fade-in">
+                <form id="instituteForm">
+                    <div class="form-group">
+                        <label>Institute Name *</label>
+                        <input type="text" placeholder="e.g., Success Academy" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Contact Person Name *</label>
+                        <input type="text" placeholder="Your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address *</label>
+                        <input type="email" placeholder="institute@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Mobile Number *</label>
+                        <input type="tel" placeholder="10-digit mobile number" required>
+                    </div>
+                    <div class="form-group">
+                        <label>City *</label>
+                        <input type="text" placeholder="Your city" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Number of Students *</label>
+                        <select required>
+                            <option value="">Select range</option>
+                            <option>Less than 50</option>
+                            <option>50-100</option>
+                            <option>101-250</option>
+                            <option>251-500</option>
+                            <option>500-1000</option>
+                            <option>1000+</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Required Features *</label>
+                        <div class="checkbox-grid">
+                            <label class="checkbox-label">
+                                <input type="checkbox"> Test Series Management
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox"> OMR Scanner
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox"> Student Analytics
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox"> Multi-branch
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox"> White-label Branding
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox"> All Features
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea placeholder="Tell us about your institute and specific needs..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" required> I agree to be contacted by Examyfi team
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1.2rem; justify-content: center;">
+                        Submit Enquiry →
+                    </button>
+                </form>
+                
+                <div class="form-sidebar">
+                    <h3>Why Choose Examyfi?</h3>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">⚡</div>
+                        <div class="benefit-text">
+                            <strong>Quick Setup</strong>
+                            <span>Go live in just 48 hours</span>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">☁️</div>
+                        <div class="benefit-text">
+                            <strong>Cloud-Based</strong>
+                            <span>No hardware needed</span>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">📈</div>
+                        <div class="benefit-text">
+                            <strong>Scalable Pricing</strong>
+                            <span>Pay only for active students</span>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">🏆</div>
+                        <div class="benefit-text">
+                            <strong>Proven Results</strong>
+                            <span>30+ toppers from partner institutes</span>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">🔄</div>
+                        <div class="benefit-text">
+                            <strong>Regular Updates</strong>
+                            <span>New features monthly</span>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">🔒</div>
+                        <div class="benefit-text">
+                            <strong>Secure Data</strong>
+                            <span>Bank-grade encryption</span>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-box">
+                        <p><strong>Call Us Directly:</strong></p>
+                        <p>📞 +91-XXXXX-XXXXX</p>
+                        <p>📧 institutes@examyfi.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section" id="faq">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Questions?</span>
+                <h2>Frequently Asked Questions</h2>
+                <p>Everything you need to know about Examyfi.</p>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span>How is Examyfi different from other test prep platforms?</span>
+                        <div class="faq-icon">+</div>
+                    </button>
+                    <div class="faq-answer">
+                        Examyfi combines expert-created content from institutions with 30+ years of teaching experience with modern AI analytics. We offer not just tests, but complete mentorship—including live paper discussions, 1:1 counselling, scholarship guidance, and admission support. Most platforms stop at mock tests; we take you all the way to your college admission.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span>What is included in the free trial?</span>
+                        <div class="faq-icon">+</div>
+                    </button>
+                    <div class="faq-answer">
+                        The Free plan is permanently free with 5 mock tests per month. The Pro plan comes with a 7-day free trial giving you access to all premium features—unlimited tests, live sessions, mentor calls, and counselling support. No credit card required to start.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span>Can institutes conduct offline tests using Examyfi?</span>
+                        <div class="faq-icon">+</div>
+                    </button>
+                    <div class="faq-answer">
+                        Absolutely! Our OMR scanner integration lets you conduct traditional pen-paper tests and scan answer sheets using any smartphone. The system processes results instantly and integrates them with online test data for unified analytics.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span>How does the SWOT profile help coaching institutes?</span>
+                        <div class="faq-icon">+</div>
+                    </button>
+                    <div class="faq-answer">
+                        The SWOT profile analyzes each student's performance across topics, time management, accuracy patterns, and consistency. This helps teachers identify students who need intervention, customize teaching approaches, and provide data-backed recommendations to parents.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span>What support do students get for admissions?</span>
+                        <div class="faq-icon">+</div>
+                    </button>
+                    <div class="faq-answer">
+                        Our counselling includes seat matrix analysis, college comparisons, state quota guidance, choice filling strategies, and documentation help. We guide you through AIQ counselling, state counselling, and deemed university admissions for NEET. For JEE, we cover JoSAA, CSAB, and state-level counselling.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="cta-section">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>Ready to Transform Your Future?</h2>
+                <p>Join thousands of students and hundreds of institutes already achieving their goals with Examyfi.</p>
+            </div>
+            <div class="cta-grid">
+                <div class="cta-box">
+                    <h3>For Students</h3>
+                    <p>Start your NEET/JEE success journey today with expert guidance and smart tools.</p>
+                    <button class="btn" onclick="openModal()">Start Free Trial →</button>
+                </div>
+                <div class="cta-box">
+                    <h3>For Institutes</h3>
+                    <p>See how Examyfi can transform your coaching center with a personalized demo.</p>
+                    <a href="#contact" class="btn">Request Demo →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="Picsart_25-11-25_16-02-38-714.png" alt="Examyfi" class="footer-logo">
+                    <p class="footer-tagline">Exam Simplified</p>
+                    <p>Empowering students and institutes with smart technology and expert mentorship for NEET & JEE success.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">f</a>
+                        <a href="#" class="social-link">📷</a>
+                        <a href="#" class="social-link">▶</a>
+                        <a href="#" class="social-link">in</a>
+                        <a href="#" class="social-link">𝕏</a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#students">For Students</a></li>
+                        <li><a href="#institutes">For Institutes</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">NEET Syllabus</a></li>
+                        <li><a href="#">JEE Syllabus</a></li>
+                        <li><a href="#">Previous Papers</a></li>
+                        <li><a href="#">Sample Tests</a></li>
+                        <li><a href="#">Success Stories</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li style="color: rgba(255, 255, 255, 0.7); line-height: 1.8;">
+                            <strong style="color: white;">For Students:</strong><br>
+                            📱 +91-XXXXX-XXXXX<br>
+                            📧 students@examyfi.com<br><br>
+                            <strong style="color: white;">For Institutes:</strong><br>
+                            📱 +91-XXXXX-XXXXX<br>
+                            📧 institutes@examyfi.com
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2025 Examyfi. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Refund Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Signup Modal -->
+    <div class="modal" id="signupModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">×</button>
+            <h2>Begin Your Success Journey</h2>
+            <p style="color: var(--text-gray); margin-bottom: 1.5rem;">Enter your mobile number to get started</p>
+            <input type="tel" class="modal-input" placeholder="Enter 10-digit mobile number" maxlength="10" id="mobileInput">
+            <button class="btn btn-primary" style="width: 100%; justify-content: center;" onclick="sendOTP()">Send OTP →</button>
+            <p class="privacy-note">🔒 Your data is secure. We'll never share your number.</p>
+        </div>
+    </div>
+
+    <script>
+        // Testimonials Carousel - Stacked Card Design
+        let currentTestimonial = 0;
+        let autoPlayTestimonial;
+        const totalTestimonials = 6;
+
+        function showTestimonial(index) {
+            // Update current index
+            currentTestimonial = index;
+
+            // Update testimonial cards
+            const cards = document.querySelectorAll('.testimonial-card-large');
+            cards.forEach((card, i) => {
+                if (i === index) {
+                    card.classList.add('active');
+                } else {
+                    card.classList.remove('active');
+                }
+            });
+
+            // Update student list items
+            const students = document.querySelectorAll('.student-item');
+            students.forEach((student, i) => {
+                if (i === index) {
+                    student.classList.add('active');
+                } else {
+                    student.classList.remove('active');
+                }
+            });
+
+            // Update indicator dots
+            const dots = document.querySelectorAll('.indicator-dot');
+            dots.forEach((dot, i) => {
+                if (i === index) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+
+            // Reset auto-play
+            resetAutoPlayTestimonial();
+        }
+
+        function navigateTestimonial(direction) {
+            let newIndex = currentTestimonial + direction;
+            
+            // Loop around
+            if (newIndex >= totalTestimonials) {
+                newIndex = 0;
+            } else if (newIndex < 0) {
+                newIndex = totalTestimonials - 1;
+            }
+            
+            showTestimonial(newIndex);
+        }
+
+        function startAutoPlayTestimonial() {
+            autoPlayTestimonial = setInterval(() => {
+                navigateTestimonial(1);
+            }, 6000);
+        }
+
+        function resetAutoPlayTestimonial() {
+            clearInterval(autoPlayTestimonial);
+            startAutoPlayTestimonial();
+        }
+
+        // Initialize
+        startAutoPlayTestimonial();
+
+        // Pause on hover
+        const testimonialShowcase = document.querySelector('.testimonial-showcase');
+        if (testimonialShowcase) {
+            testimonialShowcase.addEventListener('mouseenter', () => {
+                clearInterval(autoPlayTestimonial);
+            });
+
+            testimonialShowcase.addEventListener('mouseleave', () => {
+                startAutoPlayTestimonial();
+            });
+        }
+
+        // Touch/Swipe support for testimonials
+        let testimonialTouchStartX = 0;
+        let testimonialTouchEndX = 0;
+
+        if (testimonialShowcase) {
+            testimonialShowcase.addEventListener('touchstart', (e) => {
+                testimonialTouchStartX = e.changedTouches[0].screenX;
+                clearInterval(autoPlayTestimonial);
+            });
+
+            testimonialShowcase.addEventListener('touchend', (e) => {
+                testimonialTouchEndX = e.changedTouches[0].screenX;
+                handleTestimonialSwipe();
+                startAutoPlayTestimonial();
+            });
+        }
+
+        function handleTestimonialSwipe() {
+            if (testimonialTouchEndX < testimonialTouchStartX - 50) {
+                navigateTestimonial(1); // Swipe left
+            }
+            if (testimonialTouchEndX > testimonialTouchStartX + 50) {
+                navigateTestimonial(-1); // Swipe right
+            }
+        }
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const hamburger = document.querySelector('.hamburger');
+            mobileMenu.classList.toggle('active');
+            hamburger.classList.toggle('active');
+            
+            // Prevent body scroll when menu is open
+            if (mobileMenu.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        }
+
+        // FAQ Toggle
+        function toggleFaq(button) {
+            const faqItem = button.parentElement;
+            const wasActive = faqItem.classList.contains('active');
+            
+            // Close all FAQs
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Open clicked FAQ if it wasn't active
+            if (!wasActive) {
+                faqItem.classList.add('active');
+            }
+        }
+
+        // Modal Functions
+        function openModal() {
+            document.getElementById('signupModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('signupModal').classList.remove('active');
+        }
+
+        function sendOTP() {
+            const mobile = document.getElementById('mobileInput').value;
+            if (mobile.length === 10) {
+                alert('✅ OTP sent to ' + mobile + '!\n(Demo mode - In production, you\'ll receive an actual OTP)');
+                closeModal();
+            } else {
+                alert('⚠️ Please enter a valid 10-digit mobile number');
+            }
+        }
+
+        // Close modal on outside click
+        window.onclick = function(event) {
+            const modal = document.getElementById('signupModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+        // Form submission
+        document.getElementById('instituteForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('✅ Thank you for your enquiry!\n\nOur team will contact you within 24 hours to schedule a personalized demo.');
+            this.reset();
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -80px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
